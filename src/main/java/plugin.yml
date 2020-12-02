@@ -1,0 +1,13 @@
+name: WarpBooks
+version: 0.0.1
+main: dev.vchen04.warpbooks.Plugin
+api-version: 1.16
+commands:
+  createwarpbook:
+    description: Your description
+    usage: /createwarpbook
+    permission: warpbooks.create
+  usewarpbook:
+    description: Your description
+    usage: /usewarpbook
+    permission: warpbooks.use
