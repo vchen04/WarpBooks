@@ -41,9 +41,11 @@ public class CreateWarpBook implements CommandExecutor {
             // Store the loation information as a JSON string on page 2
             JsonObject jsonPlayerLocation = new JsonObject();
             jsonPlayerLocation.addProperty("world", playerLocation.getWorld().getName());
-            jsonPlayerLocation.addProperty("x", Math.round(playerLocation.getX()));
-            jsonPlayerLocation.addProperty("y", Math.round(playerLocation.getY()));
-            jsonPlayerLocation.addProperty("z", Math.round(playerLocation.getZ()));
+            jsonPlayerLocation.addProperty("x", playerLocation.getX());
+            jsonPlayerLocation.addProperty("y", playerLocation.getY());
+            jsonPlayerLocation.addProperty("z", playerLocation.getZ());
+            jsonPlayerLocation.addProperty("yaw", playerLocation.getYaw());
+            jsonPlayerLocation.addProperty("pitch", playerLocation.getPitch());
 
             pages.add(jsonPlayerLocation.toString());
 
@@ -51,6 +53,11 @@ public class CreateWarpBook implements CommandExecutor {
 
             ArrayList<String> lore = new ArrayList<String>();
 
+            lore.add("");
+            lore.add("§7A magical book with the power");
+            lore.add("§7to teleport whoever opens it");
+            lore.add("§7Sneak + Right Click to use");
+            lore.add("");
             lore.add(String.format("§7§lWorld §r§7%s", playerLocation.getWorld().getName()));
             lore.add(String.format("§7§lCoordinates §r§7%d, %d, %d", Math.round(playerLocation.getX()),
                     Math.round(playerLocation.getY()), Math.round(playerLocation.getZ())));
@@ -62,7 +69,7 @@ public class CreateWarpBook implements CommandExecutor {
             player.getInventory().addItem(book);
 
             return true;
-            
+
         }
 
         return false;
