@@ -17,19 +17,33 @@ import org.bukkit.inventory.meta.BookMeta;
 
 public class UseWarpBook implements Listener {
 
-    final Gson gson = new Gson();
+    final Gson GSON = new Gson();
 
     private void teleportPlayer(Player player, ItemStack book) {
 
         BookMeta bookMeta = (BookMeta) book.getItemMeta(); // Should fail if the item is not a book
 
-        JsonObject bookJsonData = gson.fromJson(bookMeta.getPage(2), JsonObject.class);
+        // It should be impossible to set the title of a book to §bWarp Book, so even if someone crafts a JSON string
+        // and saves it in a book, it should not be able to be used.
+        if (bookMeta.getTitle().equals("§bWarp Book")) {
 
-        // Should fail if there is no position data
-        player.teleport(new Location(Bukkit.getWorld(bookJsonData.get("world").getAsString()),
-                bookJsonData.get("x").getAsDouble(), bookJsonData.get("y").getAsDouble(),
-                bookJsonData.get("z").getAsDouble(), bookJsonData.get("yaw").getAsFloat(),
-                bookJsonData.get("pitch").getAsFloat()));
+            if (player.hasPermission("warpbooks.use")) {
+
+                JsonObject bookJsonData = GSON.fromJson(bookMeta.getPage(2), JsonObject.class);
+
+                // Should fail if there is no position data
+                player.teleport(new Location(Bukkit.getWorld(bookJsonData.get("world").getAsString()),
+                        bookJsonData.get("x").getAsDouble(), bookJsonData.get("y").getAsDouble(),
+                        bookJsonData.get("z").getAsDouble(), bookJsonData.get("yaw").getAsFloat(),
+                        bookJsonData.get("pitch").getAsFloat()));
+
+            } else {
+
+                player.chat("§cYou do not have permission to use a Warp Book");
+
+            }
+
+        }
 
     }
 

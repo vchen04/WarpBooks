@@ -21,27 +21,26 @@ public abstract class BlankWarpBook {
         BookMeta bookMeta = (BookMeta) book.getItemMeta();
 
         bookMeta.setTitle("§bBlank Warp Book");
-
         bookMeta.setAuthor("§k§l123456789");
 
         ArrayList<String> pages = new ArrayList<String>();
 
+        // Cover page
+        pages.add("§k§l12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912");
+
+        // JSON data page
         JsonObject bookJsonData = new JsonObject();
         bookJsonData.addProperty("type", "blank");
-
-        pages.add("§k§l12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912");
         pages.add(bookJsonData.toString());
 
         bookMeta.setPages(pages);
 
         ArrayList<String> lore = new ArrayList<String>();
-
         lore.add("");
         lore.add("§7A blank magical book with the");
         lore.add("§7power to teleport whoever opens");
         lore.add("§7it to a location written within");
         lore.add("§7Sneak + Right Click to write");
-
         bookMeta.setLore(lore);
 
         book.setItemMeta(bookMeta);

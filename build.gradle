@@ -5,16 +5,6 @@
  * Learn more about Gradle by exploring our samples at https://docs.gradle.org/6.7.1/samples
  */
 
-// buildscript {
-//     repositories {
-//         jcenter()
-//     }
-
-//     dependencies {
-//         classpath "com.github.jengelman.gradle.plugins:shadow:2.0.2"
-//     }
-// }
-
 plugins {
     id 'java'
 }
@@ -23,23 +13,12 @@ repositories {
     mavenCentral()
     maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
-    // maven {
-    //     name 'papermc'
-    //     url 'https://papermc.io/repo/repository/maven-public/'
-    // }
 }
 
 dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
-    compileOnly 'org.spigotmc:spigot-api:1.16.4-R0.1-SNAPSHOT'
-    // compile "io.papermc:paperlib:1.0.5"
+    compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
 }
-
-// apply plugin: "com.github.johnrengelman.shadow"
-
-// shadowJar {
-//    relocate 'io.papermc.lib', 'dev.vchen04.WarpBooks.paperlib'
-// }
 
 jar {
     from('src/main/java') {
