@@ -3,9 +3,9 @@ version: 1.0.0
 main: dev.vchen04.warpbooks.Plugin
 api-version: 1.16
 permissions:
-  warpbooks.write:
+  warpbooks.location.write:
     description: Allows you to write (set the location of) a Warp Book
     default: true
-  warpbooks.use:
+  warpbooks.location.use:
     description: Allows you to use a Warp Book to teleport
     default: true
